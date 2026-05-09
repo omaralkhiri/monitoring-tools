@@ -23,7 +23,7 @@ spec:
         helm:
           releaseName: grafana-operator
           valuesFiles:
-            - https://raw.githubusercontent.com/your-org/your-repo/main/monitoring/grafana-operator-values.yaml
+            - https://github.com/omaralkhiri/monitoring-tools/blob/main/monitoring/grafana-values.yaml
       destination:
         server: https://kubernetes.default.svc
         namespace: default
