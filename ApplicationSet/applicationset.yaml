@@ -1,0 +1,42 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: monitoring-tools
+  namespace: argocd 
+spec:
+  generators:
+  - list:
+      elements:
+      - appName: grafana
+        chart: grafana
+        repoURL: https://grafana-community.github.io/helm-charts
+        targetRevision: "11.2.2"
+        valuesFile: https://raw.githubusercontent.com/omaralkhiri/monitoring-tools/main/monitoring/grafana-values.yaml
+      - appName: prometheus
+        chart: kube-prometheus-stack
+        repoURL: https://prometheus-community.github.io/helm-charts
+        targetRevision: "45.0.0"
+        valuesFile: https://raw.githubusercontent.com/omaralkhiri/monitoring-tools/main/monitoring/promethuse-values.yaml
+  template:
+    metadata:
+      name: '{{appName}}'
+      namespace: argocd
+    spec:
+      project: default
+      source:
+        repoURL: '{{repoURL}}'
+        chart: '{{chart}}'
+        targetRevision: '{{targetRevision}}'
+        helm:
+          releaseName: '{{appName}}'
+          valueFiles:
+          - '{{valuesFile}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: 'monitoring'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
