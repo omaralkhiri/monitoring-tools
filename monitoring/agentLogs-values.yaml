@@ -58,4 +58,7 @@ otelCollector:
     - name: OTEL_EXPORTER_OTLP_ENDPOINT
       value: "http://signoz-otel-collector.monitoring.svc.cluster.local:4317"
     - name: SIGNOZ_API_KEY
-      value: "+et0j9YiXIKtpx7p8u39v0EonTKDdrsBniPk3OhzNZw="
+      valueFrom:
+        secretKeyRef:
+          name: signoz-api-secret
+          key: signoz_api_key
