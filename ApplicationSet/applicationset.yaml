@@ -22,11 +22,11 @@ spec:
         repoURL: https://charts.signoz.io
         targetRevision: "0.116.2"
         valuesFile: https://raw.githubusercontent.com/omaralkhiri/monitoring-tools/main/monitoring/signoz-values.yaml
-      - appName: open-telemetry
-        chart: open-telemetry
-        repoURL: https://open-telemetry.github.io/opentelemetry-helm-charts
-        targetRevision: "2.8.0"
-        valuesFile: https://raw.githubusercontent.com/omaralkhiri/monitoring-tools/main/monitoring/loki-values.yaml
+      - appName: k8s-infra
+        chart: k8s-infra
+        repoURL: signoz/k8s-infra
+        targetRevision: "0.15.0"
+        valuesFile: https://raw.githubusercontent.com/omaralkhiri/monitoring-tools/main/monitoring/agentLogs-values.yaml
   template:
     metadata:
       name: '{{appName}}'

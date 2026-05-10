@@ -1,0 +1,31 @@
+presets:
+  logsCollection:
+    enabled: true
+    logLevel: "info"
+    logFormat: "json"
+    logOutput: "stdout"
+    logRetentionDays: 7
+    logRotationSizeMB: 100
+    logRotationFrequency: "daily"
+    logRotationMaxFiles: 5
+    logRotationCompress: true
+    logRotationDateFormat: "2006-01-02"
+    logRotationTimeZone: "UTC"
+    logRotationIncludePodName: true
+    logRotationIncludeNamespace: true
+    logRotationIncludeContainerName: true
+    logRotationIncludeNodeName: true
+    logRotationIncludeClusterName: true
+    logRotationIncludeLabels: true
+    logRotationIncludeAnnotations: true
+    logRotationIncludeTimestamps: true
+    logRotationIncludeHostnames: true
+    logRotationIncludeIPs: true
+    logRotationIncludePodUID: true
+    logRotationIncludeContainerID: true
+    logRotationIncludeNodeUID: true
+    logRotationIncludeClusterUID: true
+    logRotationIncludeResourceVersion: true
+    logRotationIncludeGeneration: true
+    logRotationIncludeOwnerReferences: true
+    logRotationIncludeFinalizers: true
