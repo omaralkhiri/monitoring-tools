@@ -56,6 +56,6 @@ otelCollector:
   # Environment variables
   extraEnvs:
     - name: OTEL_EXPORTER_OTLP_ENDPOINT
-      value: "http://signoz-otel-collector.monitoring.svc.cluster.local:4317"  # Placeholder - change this!
+      value: "http://signoz-otel-collector.monitoring.svc.cluster.local:4317"
     - name: SIGNOZ_API_KEY
-      value: "+et0j9YiXIKtpx7p8u39v0EonTKDdrsBniPk3OhzNZw="  # Only needed for SigNoz Cloud
+      value: "+et0j9YiXIKtpx7p8u39v0EonTKDdrsBniPk3OhzNZw="
