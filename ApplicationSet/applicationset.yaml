@@ -24,7 +24,7 @@ spec:
         valuesFile: https://raw.githubusercontent.com/omaralkhiri/monitoring-tools/main/monitoring/signoz-values.yaml
       - appName: k8s-infra
         chart: k8s-infra
-        repoURL: signoz/k8s-infra
+        repoURL: https://charts.signoz.io
         targetRevision: "0.15.0"
         valuesFile: https://raw.githubusercontent.com/omaralkhiri/monitoring-tools/main/monitoring/agentLogs-values.yaml
   template:

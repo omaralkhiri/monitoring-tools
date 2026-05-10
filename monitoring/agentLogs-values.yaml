@@ -29,3 +29,33 @@ presets:
     logRotationIncludeGeneration: true
     logRotationIncludeOwnerReferences: true
     logRotationIncludeFinalizers: true
+
+# Add this section - configure where to send the logs
+otelCollector:
+  enabled: true
+  
+  config:
+    exporters:
+      # Option A: For testing (logs to console only)
+      logging:
+        logLevel: debug
+      
+      # Option B: For SigNoz Cloud (uncomment and configure)
+      # otlp:
+      #   endpoint: "https://ingest.signoz.cloud:443"
+      #   headers:
+      #     "signoz-access-token": "${SIGNOZ_API_KEY}"
+    
+    service:
+      pipelines:
+        logs:
+          receivers: [otlp]
+          processors: [batch]
+          exporters: [logging]  # Change to [otlp] when using SigNoz backend
+  
+  # Environment variables
+  extraEnvs:
+    - name: OTEL_EXPORTER_OTLP_ENDPOINT
+      value: "http://signoz-otel-collector.monitoring.svc.cluster.local:4317"  # Placeholder - change this!
+    - name: SIGNOZ_API_KEY
+      value: "+et0j9YiXIKtpx7p8u39v0EonTKDdrsBniPk3OhzNZw="  # Only needed for SigNoz Cloud

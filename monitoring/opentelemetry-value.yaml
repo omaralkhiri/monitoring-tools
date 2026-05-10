@@ -11,3 +11,11 @@ default:
       value: 'service.name=$(OTEL_SERVICE_NAME),service.namespace=opentelemetry-demo,service.version={{ .Chart.appVersion }}'
     - name: OTEL_COLLECTOR_NAME
       value: signoz-otel-collector.monitoring.svc.cluster.local
+    - name: OTEL_EXPORTER_OTLP_ENDPOINT
+      # OTLP gRPC default port is 4317; use host:port or URL as needed
+      value: signoz-otel-collector.monitoring.svc.cluster.local:4317
+    - name: SIGNOZ_API_KEY
+      valueFrom:
+        secretKeyRef:
+          name: signoz-api-secret
+          key: signoz_api_key
